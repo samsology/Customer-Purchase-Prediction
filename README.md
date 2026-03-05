@@ -288,9 +288,3 @@ This project is open-source and available for educational and research purposes.
 
 ---
 
-If you'd like, I can also help you create:
-
-* A **GitHub portfolio description that attracts recruiters**
-* A **LinkedIn project post**
-* A **Kaggle-style project documentation**
-* A **visual project diagram for GitHub** (which makes repositories look much more professional).
