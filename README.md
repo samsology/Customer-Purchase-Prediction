@@ -1,337 +1,296 @@
-# TECH CRUSH Data Science 2026
-
-## Team Dynamo (Group 14)
-
-### Retail / Marketing: Customer Purchase Prediction
+Below is a **professional GitHub README** suitable for a **data science portfolio project**. It is structured the way recruiters, hiring managers, and collaborators expect to see it.
 
 ---
 
-## 📌 Project Overview
+# Customer Purchase Prediction in E-Commerce
 
-Retail and e-commerce businesses continuously seek to increase conversion rates and maximize marketing ROI. Understanding **which customers are likely to complete a purchase** enables more efficient ad spend allocation, targeted campaigns, and personalized offers.
+A machine learning project that predicts whether an online shopper will complete a purchase based on browsing behavior and session attributes.
 
-This project develops a **classification model** that predicts whether an online shopper will complete a purchase based on browsing behavior and demographic information.
-
-The project was completed as part of the **Tech Crush Data Science 2026 Capstone Program** by **Team Dynamo**.
+This project demonstrates how predictive analytics can help e-commerce businesses identify high-intent visitors, improve marketing efficiency, and optimize revenue generation.
 
 ---
 
-## 🎯 Business Problem
+# Project Overview
 
-An e-commerce company wants to predict whether a customer session will result in a purchase.
+Online retail platforms collect large amounts of behavioral data during user sessions. However, most businesses fail to leverage this data effectively to predict customer intent.
 
-### Objectives:
+The goal of this project is to develop a **classification model** capable of predicting whether a user session will result in a purchase.
 
-1. Perform **Exploratory Data Analysis (EDA)** to uncover behavioral patterns.
-2. Preprocess and prepare data for modeling.
-3. Build and compare classification models.
-4. Optimize the best-performing model.
-5. Provide business-driven recommendations.
+The project focuses on:
+
+* Understanding customer browsing behavior
+* Identifying key predictors of purchase intent
+* Building and evaluating machine learning models
+* Translating model outputs into actionable business insights
 
 ---
 
-## 📂 Dataset
+# Business Problem
 
-**Source:** Kaggle – Online Shoppers Purchasing Intention Dataset
+E-commerce conversion rates are typically low. In this dataset:
+
+* **16% of sessions resulted in a purchase**
+* **84% of visitors did not convert**
+
+Without predictive analytics, marketing teams often allocate advertising budgets inefficiently.
+
+A predictive model allows businesses to:
+
+* Identify high-probability buyers
+* Personalize marketing strategies
+* Reduce advertising waste
+* Improve conversion rates
+
+---
+
+# Dataset
+
+The dataset used in this project is the **Online Shoppers Purchasing Intention Dataset**.
+
+Source:
 [https://www.kaggle.com/datasets/imakash3011/online-shoppers-purchasing-intention-dataset](https://www.kaggle.com/datasets/imakash3011/online-shoppers-purchasing-intention-dataset)
 
-### Dataset Description
+The dataset contains **12,330 user sessions** and includes behavioral, session-based, and demographic features.
 
-The dataset contains user session-level data including:
+### Key Features
 
-* Administrative page visits
-* Informational page visits
-* Product-related page visits
+Behavioral Metrics
+
+* Administrative pages visited
+* Informational pages visited
+* Product-related pages visited
 * Bounce rates
 * Exit rates
 * Page values
+
+Session Attributes
+
 * Month
-* Operating system
-* Browser
-* Region
-* Traffic type
-* Visitor type
+* Special day proximity
 * Weekend indicator
-* Target variable: `Revenue` (Purchase / No Purchase)
+
+Visitor Characteristics
+
+* Visitor type (new vs returning)
+* Browser
+* Operating system
+* Region
+* Traffic source
+
+Target Variable
+
+* **Revenue (True / False)**
+  Indicates whether the session resulted in a purchase.
 
 ---
 
-## 🧠 Project Workflow
+# Project Workflow
 
-### 1️⃣ Business Understanding
+The project followed a structured data science pipeline:
 
-* Defined problem scope.
-* Identified key business KPIs (conversion rate, precision, recall).
-* Established performance evaluation strategy.
-
----
-
-### 2️⃣ Data Understanding
-
-* Examined dataset structure and feature types.
-* Checked for missing values and data consistency.
-* Identified categorical vs numerical variables.
-* Evaluated class distribution.
-
-Observation:
-
-* Dataset is slightly imbalanced (fewer purchase cases).
+1. Business Understanding
+2. Data Exploration (EDA)
+3. Data Preprocessing
+4. Feature Engineering
+5. Model Development
+6. Model Evaluation
+7. Business Insight Generation
 
 ---
 
-## 🔎 3️⃣ Exploratory Data Analysis (EDA)
+# Exploratory Data Analysis
 
-### Univariate Analysis
+EDA revealed several behavioral patterns associated with purchase decisions:
 
-* Distribution of numerical features.
-* Frequency distribution of categorical variables.
-* Purchase rate across months and visitor types.
+* Higher **PageValues** strongly correlated with completed purchases.
+* **Returning visitors** had significantly higher conversion rates.
+* Lower **BounceRates** were associated with higher purchase probability.
+* Certain **traffic sources** produced better conversion outcomes.
 
-### Bivariate Analysis
-
-* Purchase behavior vs:
-
-  * Page value
-  * Product-related duration
-  * Bounce rate
-  * Visitor type
-  * Weekend sessions
-
-### Correlation & Multicollinearity
-
-* Correlation heatmap to detect strong linear relationships.
-* Identified key predictive features.
+These insights highlight the importance of behavioral engagement in predicting purchasing behavior.
 
 ---
 
-### 📊 Key Behavioral Findings
+# Models Implemented
 
-1. **Higher page value strongly correlates with purchase completion.**
-2. Increased **product-related page duration** increases likelihood of conversion.
-3. High **bounce rate and exit rate** negatively affect purchase probability.
-4. Returning visitors show higher conversion likelihood.
-5. Some seasonal/month-based variation exists.
+Three classification algorithms were trained and evaluated.
 
-These findings align with practical e-commerce behavior patterns.
+### Logistic Regression
 
----
+Used as a baseline interpretable model.
 
-## 🧹 4️⃣ Data Preprocessing
+Performance:
 
-### Steps Performed:
+* Accuracy: 88.9%
+* Precision: 77.2%
+* Recall: 41.6%
+* ROC-AUC: 0.90
 
-* Label encoding for categorical variables.
-* One-hot encoding where necessary.
-* Train-test split.
-* Feature scaling (where required).
-* Handling class imbalance considerations.
-* Multicollinearity checks.
+Strength: High precision
+Limitation: Misses many buyers (low recall)
 
 ---
 
-## 🤖 5️⃣ Model Building & Evaluation
+### Decision Tree
 
-Three classification models were built and compared:
+Captures nonlinear relationships between variables.
 
-1. Logistic Regression
-2. Decision Tree
-3. Random Forest
+Performance:
 
-Evaluation metrics:
+* Accuracy: 86.2%
+* Precision: 55.6%
+* Recall: 58.6%
+* ROC-AUC: 0.75
 
-* Accuracy
-* Precision
-* Recall
-* F1-Score
-* ROC-AUC
+Strength: Simplicity
+Limitation: Higher false positives
 
 ---
 
-## 📈 Model Performance Summary
+### Random Forest (Best Model)
 
-| Model               | Accuracy | Precision | Recall | F1-Score | ROC-AUC |
-| ------------------- | -------- | --------- | ------ | -------- | ------- |
-| Logistic Regression | 0.8517   | 0.5172    | 0.7880 | 0.6245   | 0.9104  |
-| Decision Tree       | 0.8570   | 0.5307    | 0.7461 | 0.6202   | 0.8692  |
-| Random Forest       | 0.8853   | 0.6058    | 0.7644 | 0.6759   | 0.9293  |
+An ensemble model combining multiple decision trees.
 
----
+Performance:
 
-## 🏆 Best Model: Random Forest
+* Accuracy: 90.6%
+* Precision: 76.0%
+* Recall: 58.1%
+* ROC-AUC: 0.93
 
-Random Forest outperformed other models across:
-
-* Highest Accuracy (88.53%)
-* Highest F1-Score
-* Highest ROC-AUC (0.9293)
-* Better precision-recall balance
+The Random Forest achieved the best balance between precision and recall and provided the strongest predictive performance.
 
 ---
 
-## 🔧 Model Optimization
+# Key Insights
 
-Hyperparameter tuning was applied to improve performance.
+The analysis revealed several important predictors of purchasing behavior:
 
-### Optimized Random Forest Performance:
+1. **PageValues**
+   Higher page value scores strongly indicate purchase intent.
 
-* Accuracy: **0.8882**
-* Precision: **0.6172**
-* Recall: **0.7513**
-* F1-Score: **0.6777**
-* ROC-AUC: **0.9306**
+2. **BounceRates**
+   Lower bounce rates correlate with higher conversions.
 
-The optimized model achieved improved balance and slightly better predictive strength.
+3. **Returning Visitors**
+   Returning customers demonstrate higher purchase probability.
 
----
+4. **ExitRates**
+   High exit rates often signal hesitation before purchase.
 
-## 📊 Interpretation & Business Insight
-
-### EDA Interpretation
-
-* Conversion likelihood increases with deeper browsing engagement.
-* Page value is a strong indicator of intent.
-* Returning users are more valuable prospects.
-
-### Model Interpretation
-
-* Random Forest captures nonlinear interactions better than Logistic Regression.
-* High ROC-AUC indicates strong discriminative ability.
-* Precision-recall tradeoff was optimized to improve marketing decision-making.
-
-### Optimization Insight
-
-Threshold tuning improved precision without severely compromising recall, making it more suitable for targeted marketing campaigns.
+These behavioral indicators provide actionable insights for marketing teams.
 
 ---
 
-## 💼 Business Recommendations
+# Business Recommendations
 
-1. **Target High Page-Value Sessions**
+Based on the model results, the following strategies are recommended:
 
-   * Trigger personalized offers for high page-value users.
+### Target High-Intent Users
 
-2. **Retarget Returning Visitors**
+Use predictive scoring to identify high-probability buyers and deliver:
 
-   * Allocate higher budget to returning user campaigns.
+* Personalized offers
+* Exit-intent promotions
+* Product recommendations
 
-3. **Reduce Bounce Rate**
+### Improve Retargeting Campaigns
 
-   * Improve landing page design.
-   * Optimize user interface and loading speed.
+Returning visitors should be prioritized through:
 
-4. **Dynamic Budget Allocation**
+* Email remarketing
+* Retargeted ads
+* Cart abandonment reminders
 
-   * Use model predictions to allocate ad spend dynamically.
+### Optimize Advertising Spend
 
-5. **Real-Time Purchase Probability Scoring**
+Allocate marketing budgets toward traffic sources with higher predicted conversion probability.
 
-   * Integrate model into production to score sessions in real time.
+### Improve Website Engagement
+
+Reduce bounce and exit rates by improving:
+
+* Website usability
+* Page loading speed
+* Mobile responsiveness
+* Product page quality
 
 ---
 
-## 🛠️ Tech Stack
+# Tools and Technologies
+
+Programming Language
 
 * Python
+
+Libraries
+
 * Pandas
 * NumPy
 * Matplotlib
 * Seaborn
 * Scikit-learn
+
+Environment
+
 * Jupyter Notebook
 
 ---
 
-## 📁 Project Structure
+# Project Structure
 
 ```
-├── Working_file(version_4).ipynb
+customer-purchase-prediction/
+
+│
+├── data/
+│   └── online_shoppers_intention.csv
+│
+├── notebooks/
+│   └── customer_purchase_prediction.ipynb
+│
 ├── README.md
-├── dataset (external – Kaggle)
-└── presentation slides
+│
+└── requirements.txt
 ```
 
 ---
 
-## 👥 Team Roles & Timeline
+# Future Improvements
 
-| Project Section             | Member(s) In-Charge | Deadline         |
-| --------------------------- | ------------------- | ---------------- |
-| Business Understanding      | All Team Members    | 20th – 22nd Feb  |
-| Data Understanding          | All Team Members    | 20th – 22nd Feb  |
-| EDA                         | Oliver / Ampadu     | 23rd – 26th Feb  |
-| Data Preprocessing          | Damilola / Akinwale | 27th – 28th Feb  |
-| Modelling                   | Feranmi / Afeez     | 1st – 2nd March  |
-| Evaluation                  | Mahmud / Oluwafunmi | 2nd – 3rd March  |
-| Interpretation              | Samuel / Stephen    | 3rd – 5th March  |
-| Recommendation / Conclusion | Samuel              | 6th March        |
-| README / Medium             | —                   | 7th March        |
-| Presentation Slide          | —                   | 8th March        |
-| Review                      | All Team Members    | 9th – 12th March |
+Potential extensions for this project include:
+
+* Gradient Boosting models (XGBoost, LightGBM)
+* Hyperparameter tuning
+* SHAP feature interpretation
+* Cost-sensitive learning for class imbalance
+* Real-time prediction deployment via API
 
 ---
 
-## 🚀 How to Run the Project
+# Contributors
 
-### 1️⃣ Clone Repository
+**Samuel Johnson**
+Data Analyst | Data Science Practitioner
+GitHub: *(add your GitHub link)*
+LinkedIn: *(add your LinkedIn link)*
 
-```bash
-git clone <repository_link>
-cd <project_folder>
-```
+**Team Dynamo**
 
-### 2️⃣ Install Dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-Or manually install:
-
-```bash
-pip install pandas numpy matplotlib seaborn scikit-learn
-```
-
-### 3️⃣ Run Notebook
-
-Open Jupyter Notebook:
-
-```bash
-jupyter notebook
-```
-
-Open:
-
-```
-Working_file(version_4).ipynb
-```
-
-Run all cells sequentially.
+* Project collaboration and analytics support
+* Capstone project development
 
 ---
 
-## 🔮 Future Improvements
+# License
 
-* Implement Gradient Boosting (XGBoost, LightGBM).
-* Address class imbalance using SMOTE.
-* Deploy as REST API using Flask/FastAPI.
-* Build dashboard for marketing team.
-* Implement real-time inference pipeline.
+This project is open-source and available for educational and research purposes.
 
 ---
 
-## 📌 Conclusion
+If you'd like, I can also help you create:
 
-This project demonstrates how data-driven modeling can significantly enhance marketing efficiency in e-commerce.
-
-The optimized Random Forest model provides strong predictive power and practical business utility. By leveraging behavioral patterns and machine learning, businesses can:
-
-* Increase conversion rates
-* Reduce wasted ad spend
-* Improve personalization
-* Drive revenue growth
-
-Team Dynamo successfully delivered a structured, end-to-end machine learning solution aligned with real-world business objectives.
-
----
-
-**Tech Crush Data Science 2026 — Team Dynamo**
+* A **GitHub portfolio description that attracts recruiters**
+* A **LinkedIn project post**
+* A **Kaggle-style project documentation**
+* A **visual project diagram for GitHub** (which makes repositories look much more professional).
