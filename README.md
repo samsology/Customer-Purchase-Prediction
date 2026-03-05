@@ -1,4 +1,3 @@
-Below is a **professional GitHub README** suitable for a **data science portfolio project**. It is structured the way recruiters, hiring managers, and collaborators expect to see it.
 
 ---
 
