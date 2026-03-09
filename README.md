@@ -270,10 +270,28 @@ Potential extensions for this project include:
 
 # Contributors
 
-**Samuel Johnson**
-Data Analyst | Data Science Practitioner
-GitHub: *(add your GitHub link)*
-LinkedIn: *(add your LinkedIn link)*
+**1. Samuel Johnson**
+GitHub: https://github.com/samsology/
+Medium: https://medium.com/@samsology78/
+LinkedIn: https://www.linkedin.com/in/samuel-johnson-766b2a337/
+
+**2. Oliver Ocran**
+GitHub: https://github.com/O-HANSON
+Medium: https://medium.com/@oliver.hanson
+LinkedIn: https://www.linkedin.com/in/oliverocran
+
+**3. Idayat Akinwale**
+GitHub: https://github.com/idayatakinwale
+Medium: https://medium.com/@kakinwaleidayat
+LinkedIn: https://www.linkedin.com/in/idayat-akinwale
+
+**4. Akinsiku Oluwadamilola**
+GitHub:  https://github.com/oluwadamilolaakinsiku
+Medium: https://medium.com/@oluwadamilolaakinsiku
+LinkedIn: https://www.linkedin.com/in/akinsiku-oluwadamilola
+
+
+
 
 **Team Dynamo**
 
